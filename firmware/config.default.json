@@ -1,0 +1,13 @@
+{
+  "contract": {
+    "package_id": "0x12123123121231312323"
+  },
+  "gas_station": {
+    "url": "http://192.168.178.1:9527",
+    "bearer": "Bearer iota"
+  },
+  "wifi": {
+    "ssid": "123123123",
+    "pass": "123123123!!!"
+  }
+}

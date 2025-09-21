@@ -1,0 +1,37 @@
+[package]
+name = "firmware"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+wifi_driver = []
+default = ["wifi_driver"]
+
+[dependencies]
+libs = { path = "../libs", default-features = false, features = ["defmt"] }
+bcs = { path = "../../bcs" }
+embassy-executor = { version = "0.9.1", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-time = { version = "0.5.0", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-rp = { version = "0.8.0", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
+embassy-net = { version = "0.7.0", features = ["defmt", "icmp", "tcp", "udp", "raw", "dhcpv4", "medium-ethernet", "dns", "proto-ipv4", "proto-ipv6", "multicast"] }
+cyw43 = { version = "0.5.0", features = ["defmt", "firmware-logs"] }
+cyw43-pio = { version = "0.8.0", features = ["defmt"] }
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+reqwless = { version = "0.13.0", features = ["defmt"] }
+cortex-m-rt = "0.7.5"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+heapless = { version = "0.9.1", features = ["serde"] }
+static_cell = { version="2.1.1", default-features = false, features = [] }
+embedded-nal-async = "0.8.0"
+embedded-alloc = "0.6.0"
+serde = { version = "1.0.219", default-features = false, features = ["derive"] }
+assign-resources = "0.5.0"
+serde-json-core = {  version="0.6.0" }
+
+portable-atomic = { version = "1.5", features = ["critical-section"] }
+
+[profile.release]
+# Enable generation of debug symbols even on release builds
+debug = 2
+
